@@ -46,4 +46,6 @@
 
 - [导入导出和权限](./daorudaochu/daorudaochu.md)
 
+- [触发器](./chufaqi/chufaqi.md)
+
 - [数据库设计初讲](./sheji/sheji.md)
