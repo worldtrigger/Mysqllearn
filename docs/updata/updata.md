@@ -44,3 +44,30 @@ UPDATE Product
  WHERE product_type = '厨房用具';
 
 ```
+
+## 当更新的时候条件是筛选出来的
+
+- 语法
+
+```bash
+UPDATE `表名` AS table1
+INNER JOIN
+(SELECT * FROM `表名` WHERE `column` = value) AS table2
+SET table1.xxx = value
+WHERE table1.xxxx = table2.xxxx
+```
+
+- 实例
+
+```bash
+
+UPDATE emp AS RESULT
+INNER JOIN
+(
+SELECT TIMESTAMPDIFF(YEAR,HIREDATE,now()) AS TIME,DEPTNO,ENAME,SAL*1.1 AS JIAGE FROM emp  WHERE TIMESTAMPDIFF(YEAR,HIREDATE,now()) >= 40 AND ENAME='SMITH'
+)AS P1
+SET RESULT.SAL = P1.JIAGE
+WHERE
+RESULT.ENAME = P1.ENAME
+
+```

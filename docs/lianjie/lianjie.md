@@ -18,7 +18,7 @@ UNION是以行（纵向）为单位进行操作，而联结则是以列（横向
 
 ### 内连接
 
-- INNER JOIN (INNER 可以省略)
+- INNER JOIN (INNER 可以省略) 表示求交集，两个都满足才会有
 
 ```bash
 
@@ -97,3 +97,15 @@ SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price, IP
 ```bash
 笛卡尔积 A表的行数xB表的行数  当两张表联合查询 没有任何限制。最后的结果是两张表的乘积
 ```
+
+### 注意事项
+
+- LEFT JOIN ON 必须加()起别名, 而主函数不用起别名可以直接调用表 表名.xxxx 例如 emp.xxx
+
+- WHERE, GROUP BY,ORDER BY 主句不能用。简单来说主句后面不能加 left join
+
+```bash
+SELECT *  FROM XXX WHERE ID =1 LEFT JOIN XXX ON XXX.ID= XXX.ID (错误)
+```
+
+`必须先把表连起来，在进行筛选。要是子句里面必须加括号起别名`
